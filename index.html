@@ -45,35 +45,50 @@
     }
     .wrap { max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
     .hero {
-      background: linear-gradient(135deg, var(--ob-deep) 0%, #2d1f5c 50%, var(--ob-deep) 100%);
-      color: var(--ob-white);
-      padding: 2.25rem 1.5rem 2.5rem;
+      background: linear-gradient(145deg, #1a1240 0%, var(--ob-deep) 35%, #2d1f5c 70%, var(--ob-deep) 100%);
+      color: #fff;
+      padding: 2rem 1.5rem 2rem;
       margin: 0 -1.5rem 2rem;
-      border-radius: 0 0 16px 16px;
+      border-radius: 0 0 20px 20px;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 8px 32px rgba(32, 21, 71, 0.25);
     }
     .hero::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(76, 64, 132, 0.4), transparent);
+      background: radial-gradient(ellipse 100% 80% at 80% 0%, rgba(124, 100, 200, 0.2), transparent 50%),
+                  radial-gradient(circle at 0% 100%, rgba(76, 64, 132, 0.15), transparent 40%);
       pointer-events: none;
     }
-    .hero .wrap { position: relative; z-index: 1; padding: 0 1.5rem; display: flex; align-items: flex-start; gap: 1.25rem; flex-wrap: wrap; }
-    .hero-logo { height: 42px; width: auto; display: block; flex-shrink: 0; object-fit: contain; }
+    .hero .wrap { position: relative; z-index: 1; padding: 0 1.5rem; }
+    .hero-top { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .hero-logo { height: 44px; width: auto; display: block; flex-shrink: 0; object-fit: contain; margin-right: 0.5rem; }
     .hero-logo[src=""], .hero-logo:not([src]) { display: none; }
     .hero-text { flex: 1; min-width: 200px; }
-    .hero h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 600; margin: 0 0 0.35rem; letter-spacing: -0.02em; }
-    .hero .subtitle { font-size: 0.95rem; opacity: 0.9; margin: 0; }
-    .hero-stat { font-size: 0.9rem; font-weight: 600; margin: 0.75rem 0 0; opacity: 0.95; }
-    .hero .meta { font-size: 0.85rem; opacity: 0.75; margin-top: 0.5rem; }
+    .hero h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 600; margin: 0 0 0.4rem; letter-spacing: -0.02em; color: #fff; }
+    .hero .subtitle { font-size: 0.9rem; color: rgba(255,255,255,0.92); margin: 0; line-height: 1.5; }
+    .hero-stat { font-size: 0.85rem; font-weight: 600; margin: 0.6rem 0 0; color: rgba(255,255,255,0.95); }
+    .hero .meta { font-size: 0.8rem; color: rgba(255,255,255,0.8); margin-top: 0.4rem; }
+    .hero-nav { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.2); }
+    .hero-nav a {
+      color: rgba(255,255,255,0.95);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.35rem 0.6rem;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .hero-nav a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .hero-nav { display: flex; flex-wrap: wrap; gap: 0.4rem 0.5rem; }
     .main-content { background: var(--bg-content); margin: 0 -1.5rem; padding: 0 1.5rem 2rem; border-radius: 12px; box-shadow: 0 1px 3px rgba(32, 21, 71, 0.06); }
     header { padding: 0 0 1.5rem; border-bottom: 2px solid var(--border); }
     h2 {
       font-size: 1.35rem;
       font-weight: 600;
-      margin: 0 0 0.5rem;
+      margin: 0 0 1rem;
       color: var(--ob-deep);
     }
     nav {
@@ -90,13 +105,13 @@
     }
     nav a:hover { color: var(--ob-magenta); text-decoration: underline; }
     section {
-      padding: 2rem 0;
+      padding: 2.25rem 0;
       border-bottom: 1px solid var(--border);
     }
     section:last-of-type { border-bottom: none; }
-    h3 { font-size: 1.05rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: var(--ob-deep); }
-    p { margin: 0 0 0.75rem; color: var(--text); }
-    .muted { color: var(--text-muted); font-size: 0.9rem; }
+    h3 { font-size: 1.05rem; font-weight: 600; margin: 1.5rem 0 0.6rem; color: var(--ob-deep); }
+    p { margin: 0 0 1rem; color: var(--text); }
+    .muted { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
     .n-label { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
     .stat-grid {
       display: grid;
@@ -112,19 +127,30 @@
     }
     .stat-card .num { font-size: 1.6rem; font-weight: 700; color: var(--ob-royal); }
     .stat-card .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
-    .chart-container { position: relative; height: 280px; margin: 1.25rem 0; }
+    .chart-container { position: relative; height: 280px; margin: 1.5rem 0; }
     .chart-container.sm { height: 240px; }
     .insight-box {
       background: rgba(76, 64, 132, 0.06);
       border-left: 4px solid var(--insight-border);
-      padding: 1rem 1.25rem;
-      margin: 1rem 0;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
       border-radius: 0 8px 8px 0;
     }
     .insight-box strong { color: var(--ob-deep); }
-    .finding-q { font-style: italic; color: var(--text-muted); margin-bottom: 0.5rem; }
-    ul { margin: 0.5rem 0 1rem; padding-left: 1.25rem; }
-    li { margin: 0.35rem 0; }
+    .distinction-card {
+      background: rgba(76, 64, 132, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .distinction-card h4 { font-size: 1rem; margin: 0 0 0.75rem; color: var(--ob-deep); }
+    .distinction-card ul { margin: 0.5rem 0 0.75rem; padding-left: 1.25rem; }
+    .distinction-card li { margin: 0.4rem 0; }
+    .distinction-card .takeaway { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--border); font-size: 0.9rem; color: var(--ob-royal); font-weight: 500; }
+    .finding-q { font-style: italic; color: var(--text-muted); margin-bottom: 1rem; }
+    ul { margin: 0.75rem 0 1.25rem; padding-left: 1.25rem; }
+    li { margin: 0.5rem 0; }
     .quote-group h4 { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ob-royal); margin: 1rem 0 0.5rem; }
     blockquote {
       margin: 0.5rem 0;
@@ -181,32 +207,30 @@
   <div class="wrap">
     <div class="hero">
       <div class="wrap">
-        <img src="OB_Logo_white_words.png" alt="OnBoard" class="hero-logo" />
-        <div class="hero-text">
-          <h1>Governance Insights 2025 Survey</h1>
-          <p class="subtitle">Quantitative results and insights from board leaders on governance insights maturity, AI readiness, and product direction</p>
-          <p class="hero-stat">72% interested in AI-generated insights · 55% say insights are fragmented or manual · 78% expect Developing or Advanced maturity in 12 months</p>
-          <p class="meta">Governance Insights Survey Report</p>
+        <div class="hero-top">
+          <img src="OB_Logo_white_words.png" alt="OnBoard" class="hero-logo" />
+          <div class="hero-text">
+            <h1>Governance Insights 2025 Survey</h1>
+            <p class="subtitle">Quantitative results and insights from board leaders on governance insights maturity, AI readiness, and product direction</p>
+            <p class="hero-stat">72% interested in AI-generated insights · 55% say insights are fragmented or manual · 78% expect Developing or Advanced maturity in 12 months</p>
+            <p class="meta">Governance Insights Survey Report</p>
+          </div>
         </div>
+        <nav class="hero-nav">
+          <a href="#background">Research background</a>
+          <a href="#participants">Participant overview</a>
+          <a href="#summary">Executive summary</a>
+          <a href="#findings">Key findings</a>
+          <a href="#distinctions">Key distinctions</a>
+          <a href="#quotes">In their words</a>
+          <a href="#direction">Product direction</a>
+          <a href="#gtm">GTM nuggets</a>
+          <a href="#appendix">Appendix</a>
+        </nav>
       </div>
     </div>
 
     <div class="main-content">
-    <section id="agenda">
-      <h2>Contents</h2>
-      <nav>
-        <a href="#background">Research background</a>
-        <a href="#participants">Participant overview</a>
-        <a href="#summary">Executive summary</a>
-        <a href="#findings">Key findings</a>
-        <a href="#distinctions">Key distinctions</a>
-        <a href="#quotes">In their words</a>
-        <a href="#direction">Product direction</a>
-        <a href="#gtm">GTM nuggets</a>
-        <a href="#appendix">Appendix</a>
-      </nav>
-    </section>
-
     <section id="background">
       <h2>Research background</h2>
       <p><strong>Purpose</strong></p>
@@ -333,22 +357,48 @@
 
     <section id="distinctions">
       <h2>Key distinctions: insights that go beyond the charts</h2>
-      <p class="muted">Cross-question analysis and actionable takeaways that connect how one answer predicts or differs from another—so product and GTM can act on them.</p>
+      <p class="muted" style="margin-bottom: 1.5rem;">Cross-question analysis and actionable takeaways—so product and GTM can act on them.</p>
 
-      <div class="insight-box">
-        <strong>Maturity predicts AI adoption.</strong> Among Advanced-maturity boards, 21% are already using AI for governance insights today (vs. 5% of Informal and 0% of Not sure). High expectation (actively planning/piloting) is also concentrated in Advanced (9%) and Developing (8%). <em>Takeaway: Segment by maturity—lead with AI and structured insights for Advanced/Developing; build trust and basics first for Basic/Informal.</em>
+      <div class="distinction-card">
+        <h4>Maturity predicts AI adoption</h4>
+        <ul>
+          <li>Advanced-maturity boards: <strong>21%</strong> already using AI today (vs. 5% Informal, 0% Not sure).</li>
+          <li>High expectation (planning/piloting): concentrated in Advanced (9%) and Developing (8%).</li>
+        </ul>
+        <p class="takeaway">Takeaway: Segment by maturity—lead with AI for Advanced/Developing; build trust and basics first for Basic/Informal.</p>
       </div>
-      <div class="insight-box">
-        <strong>Role shapes both interest and visibility.</strong> Corporate Secretary/General Counsel report the highest ease accessing insights (61% Easy+Very Easy on materials, 45% on oversight/risk). Executive Directors report the lowest on director engagement (28%). At the same time, Corporate Secretary/GC and Board Director/Member show the highest share at AI interest 4–5. <em>Takeaway: Position “ease of access” and “single source of truth” for Secretaries; position “engagement visibility” and AI for EDs and Directors.</em>
+      <div class="distinction-card">
+        <h4>Role shapes both interest and visibility</h4>
+        <ul>
+          <li>Corporate Secretary/GC: highest ease—61% Easy+Very Easy on materials, 45% on oversight/risk.</li>
+          <li>Executive Directors: lowest on director engagement (28%).</li>
+          <li>Secretary/GC and Board Director/Member: highest share at AI interest 4–5.</li>
+        </ul>
+        <p class="takeaway">Takeaway: Position “ease of access” for Secretaries; “engagement visibility” and AI for EDs and Directors.</p>
       </div>
-      <div class="insight-box">
-        <strong>Industry shifts AI interest.</strong> Financial services and Corporate show a higher proportion at “very interested” (5) than Nonprofit and Education. Nonprofit is the largest segment (49%) and spread across the interest scale. <em>Takeaway: Prioritize Financial services and Corporate for AI-first messaging and pilots; use trust and workflow value for broad appeal to Nonprofit.</em>
+      <div class="distinction-card">
+        <h4>Industry shifts AI interest</h4>
+        <ul>
+          <li>Financial services and Corporate: higher proportion “very interested” (5) than Nonprofit and Education.</li>
+          <li>Nonprofit: largest segment (49%), spread across the interest scale.</li>
+        </ul>
+        <p class="takeaway">Takeaway: Prioritize FinServ and Corporate for AI-first messaging; use trust and workflow for Nonprofit.</p>
       </div>
-      <div class="insight-box">
-        <strong>One barrier dominates—build there first.</strong> 55% of respondents selected “Exists but fragmented/manual” (195 mentions). No other barrier exceeds 32%. <em>Takeaway: Lead product and messaging with consolidation, less manual effort, and “one place” for governance insights.</em>
+      <div class="distinction-card">
+        <h4>One barrier dominates—build there first</h4>
+        <ul>
+          <li><strong>55%</strong> selected “Exists but fragmented/manual” (195 mentions).</li>
+          <li>No other barrier exceeds 32%.</li>
+        </ul>
+        <p class="takeaway">Takeaway: Lead with consolidation, less manual effort, and “one place” for governance insights.</p>
       </div>
-      <div class="insight-box">
-        <strong>The “moderate expectation” segment is the near-term opportunity.</strong> 33% have moderate expectation (likely within 12 months but no active plan yet) vs. 8% already using and 7% high expectation. <em>Takeaway: Capture the moderate-expectation segment by leading with trust (privacy, audit trail, human review) and clear use cases (follow-through, engagement, materials quality).</em>
+      <div class="distinction-card">
+        <h4>The “moderate expectation” segment is the near-term opportunity</h4>
+        <ul>
+          <li><strong>33%</strong> have moderate expectation (likely within 12 months, no active plan yet).</li>
+          <li>vs. 8% already using and 7% high expectation.</li>
+        </ul>
+        <p class="takeaway">Takeaway: Capture this segment with trust (privacy, audit trail, human review) and clear use cases (follow-through, engagement, materials).</p>
       </div>
     </section>
 
