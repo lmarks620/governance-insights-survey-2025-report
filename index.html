@@ -45,50 +45,47 @@
     }
     .wrap { max-width: 920px; margin: 0 auto; padding: 0 1.5rem; }
     .hero {
-      background: linear-gradient(145deg, #1a1240 0%, var(--ob-deep) 35%, #2d1f5c 70%, var(--ob-deep) 100%);
+      background: var(--ob-deep);
       color: #fff;
-      padding: 2rem 1.5rem 2rem;
-      margin: 0 -1.5rem 2rem;
-      border-radius: 0 0 20px 20px;
+      padding: 2.5rem 1.5rem 2.25rem;
+      margin: 0 -1.5rem 0;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(32, 21, 71, 0.25);
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), 0 100%);
     }
-    .hero::before {
+    .hero::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse 100% 80% at 80% 0%, rgba(124, 100, 200, 0.2), transparent 50%),
-                  radial-gradient(circle at 0% 100%, rgba(76, 64, 132, 0.15), transparent 40%);
+      left: 0; right: 0; bottom: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--ob-magenta), var(--ob-royal));
       pointer-events: none;
     }
     .hero .wrap { position: relative; z-index: 1; padding: 0 1.5rem; }
-    .hero-top { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
-    .hero-logo { height: 44px; width: auto; display: block; flex-shrink: 0; object-fit: contain; margin-right: 0.5rem; }
+    .hero-top { display: flex; align-items: center; gap: 2.25rem; flex-wrap: wrap; }
+    .hero-logo { height: 48px; width: auto; display: block; flex-shrink: 0; object-fit: contain; }
     .hero-logo[src=""], .hero-logo:not([src]) { display: none; }
     .hero-text { flex: 1; min-width: 200px; }
-    .hero h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 600; margin: 0 0 0.4rem; letter-spacing: -0.02em; color: #fff; }
-    .hero .subtitle { font-size: 0.9rem; color: rgba(255,255,255,0.92); margin: 0; line-height: 1.5; }
-    .hero-stat { font-size: 0.85rem; font-weight: 600; margin: 0.6rem 0 0; color: rgba(255,255,255,0.95); }
-    .hero .meta { font-size: 0.8rem; color: rgba(255,255,255,0.8); margin-top: 0.4rem; }
-    .hero-nav { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.2); }
+    .hero h1 { font-size: clamp(1.6rem, 4.5vw, 2.25rem); font-weight: 600; margin: 0; letter-spacing: -0.03em; color: #fff; line-height: 1.2; }
+    .hero-nav { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.18); }
     .hero-nav a {
-      color: rgba(255,255,255,0.95);
+      color: rgba(255,255,255,0.9);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 500;
-      padding: 0.35rem 0.6rem;
-      border-radius: 6px;
+      letter-spacing: 0.02em;
+      padding: 0.4rem 0.65rem;
+      border-radius: 4px;
       transition: background 0.2s, color 0.2s;
     }
-    .hero-nav a:hover { background: rgba(255,255,255,0.15); color: #fff; }
-    .hero-nav { display: flex; flex-wrap: wrap; gap: 0.4rem 0.5rem; }
-    .main-content { background: var(--bg-content); margin: 0 -1.5rem; padding: 0 1.5rem 2rem; border-radius: 12px; box-shadow: 0 1px 3px rgba(32, 21, 71, 0.06); }
+    .hero-nav a:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    .hero-nav { display: flex; flex-wrap: wrap; gap: 0.35rem 0.5rem; }
+    .main-content { background: var(--bg-content); margin: 0 -1.5rem 0; padding: 2rem 1.5rem 2rem; border-radius: 12px 12px 0 0; box-shadow: 0 -2px 12px rgba(32, 21, 71, 0.08); }
     header { padding: 0 0 1.5rem; border-bottom: 2px solid var(--border); }
     h2 {
       font-size: 1.35rem;
       font-weight: 600;
-      margin: 0 0 1rem;
+      margin: 0 0 0.5rem;
       color: var(--ob-deep);
     }
     nav {
@@ -105,13 +102,13 @@
     }
     nav a:hover { color: var(--ob-magenta); text-decoration: underline; }
     section {
-      padding: 2.25rem 0;
+      padding: 2rem 0;
       border-bottom: 1px solid var(--border);
     }
     section:last-of-type { border-bottom: none; }
-    h3 { font-size: 1.05rem; font-weight: 600; margin: 1.5rem 0 0.6rem; color: var(--ob-deep); }
-    p { margin: 0 0 1rem; color: var(--text); }
-    .muted { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    h3 { font-size: 1.05rem; font-weight: 600; margin: 1.75rem 0 0.85rem; color: var(--ob-deep); }
+    p { margin: 0 0 0.75rem; color: var(--text); }
+    .muted { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
     .n-label { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
     .stat-grid {
       display: grid;
@@ -127,13 +124,13 @@
     }
     .stat-card .num { font-size: 1.6rem; font-weight: 700; color: var(--ob-royal); }
     .stat-card .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
-    .chart-container { position: relative; height: 280px; margin: 1.5rem 0; }
-    .chart-container.sm { height: 240px; }
+    .chart-container { position: relative; height: 280px; margin: 1.75rem 0 2rem; }
+    .chart-container.sm { height: 240px; margin: 1.75rem 0 1.75rem; }
     .insight-box {
       background: rgba(76, 64, 132, 0.06);
       border-left: 4px solid var(--insight-border);
       padding: 1.25rem 1.5rem;
-      margin: 1.25rem 0;
+      margin: 1.5rem 0 1.25rem;
       border-radius: 0 8px 8px 0;
     }
     .insight-box strong { color: var(--ob-deep); }
@@ -148,9 +145,9 @@
     .distinction-card ul { margin: 0.5rem 0 0.75rem; padding-left: 1.25rem; }
     .distinction-card li { margin: 0.4rem 0; }
     .distinction-card .takeaway { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--border); font-size: 0.9rem; color: var(--ob-royal); font-weight: 500; }
-    .finding-q { font-style: italic; color: var(--text-muted); margin-bottom: 1rem; }
-    ul { margin: 0.75rem 0 1.25rem; padding-left: 1.25rem; }
-    li { margin: 0.5rem 0; }
+    .finding-q { font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; margin-top: 0.25rem; }
+    ul { margin: 0.5rem 0 1rem; padding-left: 1.25rem; }
+    li { margin: 0.35rem 0; }
     .quote-group h4 { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ob-royal); margin: 1rem 0 0.5rem; }
     blockquote {
       margin: 0.5rem 0;
@@ -211,9 +208,6 @@
           <img src="OB_Logo_white_words.png" alt="OnBoard" class="hero-logo" />
           <div class="hero-text">
             <h1>Governance Insights 2025 Survey</h1>
-            <p class="subtitle">Quantitative results and insights from board leaders on governance insights maturity, AI readiness, and product direction</p>
-            <p class="hero-stat">72% interested in AI-generated insights · 55% say insights are fragmented or manual · 78% expect Developing or Advanced maturity in 12 months</p>
-            <p class="meta">Governance Insights Survey Report</p>
           </div>
         </div>
         <nav class="hero-nav">
