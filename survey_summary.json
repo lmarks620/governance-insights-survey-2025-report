@@ -396,36 +396,257 @@
       "count": 152
     }
   ],
+  "ease_by_area": [
+    {
+      "area": "Meetings run",
+      "pct_easy": 61
+    },
+    {
+      "area": "Materials",
+      "pct_easy": 56
+    },
+    {
+      "area": "Follow-through",
+      "pct_easy": 46
+    },
+    {
+      "area": "Committees",
+      "pct_easy": 45
+    },
+    {
+      "area": "Discussions",
+      "pct_easy": 45
+    },
+    {
+      "area": "Oversight/risk",
+      "pct_easy": 42
+    },
+    {
+      "area": "Strategy",
+      "pct_easy": 40
+    },
+    {
+      "area": "Composition",
+      "pct_easy": 38
+    },
+    {
+      "area": "Director engagement",
+      "pct_easy": 38
+    }
+  ],
+  "ai_priority_first": [
+    {
+      "label": "Board skills",
+      "count": 60
+    },
+    {
+      "label": "Quality & timeliness",
+      "count": 58
+    },
+    {
+      "label": "Progress on strategy",
+      "count": 55
+    },
+    {
+      "label": "Early warning",
+      "count": 48
+    },
+    {
+      "label": "Follow-through",
+      "count": 44
+    },
+    {
+      "label": "Board meeting focus",
+      "count": 36
+    },
+    {
+      "label": "Director engagement",
+      "count": 26
+    },
+    {
+      "label": "Committee work",
+      "count": 20
+    },
+    {
+      "label": "Quality & balance",
+      "count": 11
+    }
+  ],
   "value_quotes": [
-    "WE have been crafting an investment policy for 4 years and can't get traction!",
-    "timeliness of decision making/follow through",
-    "How to collaborate better. I would recognize improvement when things move through the board more quickly.",
-    "with time to save manually logging and with decision quality and follow through of actions",
-    "Strategic decisions are made in a timely fashion.",
-    "better job of creating actiona and follow thru to execute a  set strategy",
-    "Decision quality would allow for greater engagement",
-    "Role of the board vs management; risk oversight.",
-    "With centralized and/or automated assistance, we would be less dependent on staff and each other to collect and analyze data.",
-    "Amt of pushback legal or otherwise",
-    "Expectations and reporting standards by committees. Strategic planning outline and making the plan evergreen. At director initiation a document that outlines expectations while onboarding. When recruiting directors things that signal \u2018red flags\u2019. Not every CEO makes a qualified \u201cteamwork\u201d type of director.",
-    "Follow through and passionate engagement",
-    "A strong Chair that ensures that executive responses and delivers on Board directions.",
-    "risk mitigation; time savings; decision quality; more productive board meetings with greater follow-through on decisions; more productive discussions with well-prepared board members",
-    "Save time, clarify job roles and increase confidence",
-    "Time - Noticeable work and recording of actions",
-    "Utilization of committees and committees charged to do their task and report to  board versus all decisions coming to full board.",
-    "decision quality. diversity of board expertise",
-    "I think the board would actually function and get stuff done if we had some better insights around time and follow through. Things would improve and we could make forward progress.",
-    "By-laws written by parents, a do over since the current one was appointed and not elected in a school wide how it works not just give me your name",
-    "The structure, timing and quality of content would improve",
-    "Over time, stronger governance insights would show up in improved board satisfaction, more effective use of meeting time, and clearer alignment between board direction, management execution, and organizational outcomes.",
-    "Our board needs to remove themselves from operations and speak with one voice. If things improved, we would see a more efficient board providing clearer direction.",
-    "Having a space to note next steps, action items and then to note/capture the output or finished date would be a great KPI",
-    "Follow through and holding to account",
-    "Decision quality, less time consumption",
-    "better use of board members' time/attention",
-    "decision quality at strategic level / monitor/follow through on directors/senior managers engagement at and between meetings",
-    "transparency on follow up to decisions",
-    "Greater Director engagement and leadership"
+    {
+      "quote": "WE have been crafting an investment policy for 4 years and can't get traction!",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "timeliness of decision making/follow through",
+      "role": "Corporate Secretary/General Counsel",
+      "industry": "Financial services"
+    },
+    {
+      "quote": "How to collaborate better. I would recognize improvement when things move through the board more quickly.",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "with time to save manually logging and with decision quality and follow through of actions",
+      "role": "Corporate Secretary/General Counsel",
+      "industry": "Education"
+    },
+    {
+      "quote": "Strategic decisions are made in a timely fashion.",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "better job of creating actiona and follow thru to execute a  set strategy",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "Decision quality would allow for greater engagement",
+      "role": "CEO/President",
+      "industry": "Unknown"
+    },
+    {
+      "quote": "Role of the board vs management; risk oversight.",
+      "role": "Board Director/Member",
+      "industry": "Other (please specify)"
+    },
+    {
+      "quote": "With centralized and/or automated assistance, we would be less dependent on staff and each other to collect and analyze data.",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "Amt of pushback legal or otherwise",
+      "role": "CEO/President",
+      "industry": "Education"
+    },
+    {
+      "quote": "Expectations and reporting standards by committees. Strategic planning outline and making the plan evergreen. At director initiation a document that outlines expectations while onboarding. When recruiting directors things that signal \u2018red flags\u2019. Not every CEO makes a qualified \u201cteamwork\u201d type of director.",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "Follow through and passionate engagement",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "A strong Chair that ensures that executive responses and delivers on Board directions.",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "risk mitigation; time savings; decision quality; more productive board meetings with greater follow-through on decisions; more productive discussions with well-prepared board members",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "Save time, clarify job roles and increase confidence",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "Time - Noticeable work and recording of actions",
+      "role": "Corporate Secretary/General Counsel",
+      "industry": "Education"
+    },
+    {
+      "quote": "Utilization of committees and committees charged to do their task and report to  board versus all decisions coming to full board.",
+      "role": "Corporate Secretary/General Counsel",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "decision quality. diversity of board expertise",
+      "role": "Other",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "I think the board would actually function and get stuff done if we had some better insights around time and follow through. Things would improve and we could make forward progress.",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "By-laws written by parents, a do over since the current one was appointed and not elected in a school wide how it works not just give me your name",
+      "role": "Other",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "The structure, timing and quality of content would improve",
+      "role": "Board Director/Member",
+      "industry": "Other (please specify)"
+    },
+    {
+      "quote": "Over time, stronger governance insights would show up in improved board satisfaction, more effective use of meeting time, and clearer alignment between board direction, management execution, and organizational outcomes.",
+      "role": "Corporate Secretary/General Counsel",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "Our board needs to remove themselves from operations and speak with one voice. If things improved, we would see a more efficient board providing clearer direction.",
+      "role": "Board Administrator",
+      "industry": "Education"
+    },
+    {
+      "quote": "Having a space to note next steps, action items and then to note/capture the output or finished date would be a great KPI",
+      "role": "Board Administrator",
+      "industry": "Education"
+    },
+    {
+      "quote": "Follow through and holding to account",
+      "role": "Board Director/Member",
+      "industry": "Corporate"
+    },
+    {
+      "quote": "Decision quality, less time consumption",
+      "role": "Board Director/Member",
+      "industry": "Education"
+    },
+    {
+      "quote": "better use of board members' time/attention",
+      "role": "CEO/President",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "decision quality at strategic level / monitor/follow through on directors/senior managers engagement at and between meetings",
+      "role": "Corporate Secretary/General Counsel",
+      "industry": "Corporate"
+    },
+    {
+      "quote": "transparency on follow up to decisions",
+      "role": "Executive Director",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "Greater Director engagement and leadership",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "More engagement by more directors, more attention during meetings, leave personal concerns at the door, represent the membership not self interest. Get the nominating committee to follow guidance and select candidates that could fill board inadequacy in certain areas.",
+      "role": "Board Director/Member",
+      "industry": "Financial services"
+    },
+    {
+      "quote": "time together outside of meetings",
+      "role": "Board Director/Member",
+      "industry": "Other (please specify)"
+    },
+    {
+      "quote": "More effective communication and improved outcomes.",
+      "role": "Board Director/Member",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "We cannot afford user licences for all staff members with responsibility for document creation and reporting in addition to all the volunteer Directors. Some individuals don't deliver until the last minute, creating a bottleneck for the (part time) administrator.",
+      "role": "Board Administrator",
+      "industry": "Nonprofit"
+    },
+    {
+      "quote": "Tim could be reduced if they were more automated/less manual",
+      "role": "Corporate Secretary/General Counsel",
+      "industry": "Nonprofit"
+    }
   ]
 }
