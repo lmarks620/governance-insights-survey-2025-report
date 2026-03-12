@@ -550,11 +550,25 @@
     </footer>
   </div>
 
+  <div id="chart-error" style="display:none; margin:1rem 1.5rem; padding:1rem; background:#fff3cd; border:1px solid #ffc107; border-radius:8px; color:#856404;"></div>
+
   <script>
     (function() {
+      function showError(msg) {
+        var el = document.getElementById('chart-error');
+        if (el) { el.textContent = msg; el.style.display = 'block'; }
+      }
+      if (typeof Chart === 'undefined') {
+        showError('Charts: Chart.js did not load. Check your connection or try again later.');
+        return;
+      }
       const hasDataLabels = typeof ChartDataLabels !== 'undefined';
       if (hasDataLabels) Chart.register(ChartDataLabels);
-      const dataUrl = 'survey_summary.json';
+      var origin = window.location.origin;
+      var path = (window.location.pathname || '/').replace(/#.*$/, '');
+      if (!path.endsWith('/')) path = path.replace(/\/[^/]*$/, '/') || '/';
+      var base = origin + path;
+      var dataUrl = base + 'survey_summary.json';
       const shortMaturity = (s) => {
         if (!s) return 'Other';
         if (s.startsWith('Advanced')) return 'Advanced';
@@ -577,20 +591,26 @@
       const tickColor = '#4C4084';
 
       function loadData() {
-        return fetch('survey_summary.json').then(r => {
+        return fetch(dataUrl).then(r => {
           if (r.ok) return r.json();
-          return fetch('data/survey_summary.json').then(r2 => r2.ok ? r2.json() : Promise.reject(new Error('Data not found')));
+          return fetch(base + 'data/survey_summary.json').then(r2 => r2.ok ? r2.json() : Promise.reject(new Error('Data not found')));
         });
       }
       loadData()
         .then(d => {
+          if (!d || typeof d.n === 'undefined') {
+            showError('Charts: Invalid data format.');
+            return;
+          }
           const n = d.n;
           document.getElementById('stat-n').textContent = n;
           document.getElementById('n-participants').textContent = n;
           document.getElementById('n-industry').textContent = n;
 
           function createBarChart(id, labels, counts, colors) {
-            new Chart(document.getElementById(id), {
+            var el = document.getElementById(id);
+            if (!el) return;
+            new Chart(el, {
               type: 'bar',
               data: {
                 labels,
@@ -624,7 +644,9 @@
                 formatter: (value) => total ? (value * 100 / total).toFixed(0) + '%' : ''
               };
             }
-            new Chart(document.getElementById(id), {
+            var el = document.getElementById(id);
+            if (!el) return;
+            new Chart(el, {
               type: 'doughnut',
               data: { labels, datasets: [{ data: counts, backgroundColor: colors }] },
               plugins: hasDataLabels ? [ChartDataLabels] : [],
@@ -780,7 +802,7 @@
             }).join('');
           }
         })
-        .catch(e => console.error('Load data failed', e));
+        .catch(e => { console.error('Load data failed', e); showError('Charts: Could not load data. (' + (e.message || 'network error') + ')'); });
     })();
   </script>
 </body>
