@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Governance Insights 2025 Survey — OnBoard</title>
+  <title>Governance Insights 2026 Survey — OnBoard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
   <style>
     /* OnBoard Brand: primary #201547 deep purple, #4C4084 royal purple, #C5299B magenta, #F2F2F2 gray */
     /* Secondary/digital: #3B2CEA, #6359DE, #AC9EFF, #68D4FC, #FF8024, #FB00AE */
@@ -156,6 +157,7 @@
     .stat-card .label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
     .chart-container { position: relative; height: 280px; margin: 1.75rem 0 2rem; }
     .chart-container.sm { height: 240px; margin: 1.75rem 0 1.75rem; }
+    .chart-container-wide { height: 320px; }
     .insight-box {
       background: rgba(76, 64, 132, 0.06);
       border-left: 4px solid var(--insight-border);
@@ -175,6 +177,9 @@
     .distinction-card ul { margin: 0.5rem 0 0.75rem; padding-left: 1.25rem; }
     .distinction-card li { margin: 0.4rem 0; }
     .distinction-card .takeaway { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--border); font-size: 0.9rem; color: var(--ob-royal); font-weight: 500; }
+    .maturity-definitions { background: var(--bg-page); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; font-size: 0.9rem; }
+    .maturity-definitions ul { margin: 0.5rem 0 0; padding-left: 1.25rem; }
+    .maturity-definitions li { margin: 0.35rem 0; }
     .finding-q { font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; margin-top: 0.25rem; }
     ul { margin: 0.5rem 0 1rem; padding-left: 1.25rem; }
     li { margin: 0.35rem 0; }
@@ -237,7 +242,7 @@
         <div class="hero-top">
           <img src="OB_Logo_white_words.png" alt="OnBoard" class="hero-logo" />
           <div class="hero-text">
-            <h1>Governance Insights 2025 Survey Results</h1>
+            <h1>Governance Insights 2026 Survey Results</h1>
           </div>
         </div>
         <nav class="hero-nav">
@@ -300,6 +305,15 @@
 
     <section id="summary">
       <h2>Executive Summary</h2>
+      <div class="insight-box" style="margin-top: 0;">
+        <strong>Key points</strong>
+        <ul style="margin: 0.5rem 0 0; padding-left: 1.25rem;">
+          <li><strong>78%</strong> expect to be in Developing or Advanced maturity in 12 months.</li>
+          <li><strong>72%</strong> are somewhat to very interested in AI-generated governance insights; <strong>8%</strong> already using AI today.</li>
+          <li>Top barrier: <strong>"Exists but fragmented/manual" (55%)</strong>—then "No owner/follow-through" and "Not actionable."</li>
+          <li>Top AI requirements: <strong>data privacy, human review before sharing, transparent audit trails.</strong></li>
+        </ul>
+      </div>
       <p>Board effectiveness and governance insights maturity are mixed; a majority expect to be in “Developing” or “Advanced” in 12 months. AI interest is strong, with trust and controls as prerequisites.</p>
       <ul>
         <li>Board insights maturity is spread across Developing (33%), Basic (27%), and Advanced (25%). 78% expect to be in Developing or Advanced in 12 months.</li>
@@ -315,6 +329,16 @@
 
       <h3>How Boards Measure and Use Governance Insights Today</h3>
       <p class="finding-q">Which statement best describes how your board currently measures and uses governance insights? | N=358</p>
+      <div class="maturity-definitions">
+        <strong>What these terms mean:</strong>
+        <ul>
+          <li><strong>Advanced</strong> — Structured reporting across key governance areas, reviewed on a regular cadence; it informs improvements and follow-through.</li>
+          <li><strong>Developing</strong> — Multiple areas reviewed periodically with some trends visible; insights aren’t always timely, trusted, or acted on.</li>
+          <li><strong>Basic</strong> — A few metrics tracked (e.g., attendance), but not reviewed consistently or tied to improvement actions.</li>
+          <li><strong>Informal</strong> — Reliance on informal feedback and individual memory; little or no consistent reporting.</li>
+          <li><strong>Not sure / N/A</strong> — Respondent was unsure or the question was not applicable.</li>
+        </ul>
+      </div>
       <div class="chart-container">
         <canvas id="chartMaturity"></canvas>
       </div>
@@ -351,13 +375,13 @@
 
       <h3>What Boards Want From AI (Trust &amp; Controls)</h3>
       <p class="finding-q">Which capabilities are important for AI-generated governance insights? …participants allowed to choose more than one | N=358</p>
-      <div class="chart-container sm">
+      <div class="chart-container chart-container-wide">
         <canvas id="chartAIRequirements"></canvas>
       </div>
 
       <h3>If AI Could Help, What Would You Want It to Do First?</h3>
       <p class="finding-q">Please rank the following options from most urgent to least. (Chart shows first/selected priority per respondent.) | N=358</p>
-      <div class="chart-container sm">
+      <div class="chart-container chart-container-wide">
         <canvas id="chartAIPriority"></canvas>
       </div>
       <div class="insight-box">
@@ -522,12 +546,13 @@
     </div><!-- .main-content -->
 
     <footer>
-      Governance Insights 2025 Survey Report. N=358. OnBoard | ©2025 Passageways, Inc. Confidential. All rights reserved.
+      Governance Insights 2026 Survey Report. N=358. OnBoard | ©2026 Passageways, Inc. Confidential. All rights reserved.
     </footer>
   </div>
 
   <script>
     (function() {
+      if (typeof ChartDataLabels !== 'undefined') Chart.register(ChartDataLabels);
       const dataUrl = 'survey_summary.json';
       const shortMaturity = (s) => {
         if (!s) return 'Other';
@@ -578,13 +603,22 @@
             });
           }
           function createDoughnut(id, labels, counts, colors) {
+            const total = counts.reduce((a, b) => a + b, 0);
             new Chart(document.getElementById(id), {
               type: 'doughnut',
               data: { labels, datasets: [{ data: counts, backgroundColor: colors }] },
+              plugins: [ChartDataLabels],
               options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { position: 'right' } }
+                plugins: {
+                  legend: { position: 'right' },
+                  datalabels: {
+                    color: '#fff',
+                    font: { size: 11, weight: 'bold' },
+                    formatter: (value) => total ? (value * 100 / total).toFixed(0) + '%' : ''
+                  }
+                }
               }
             });
           }
@@ -617,24 +651,35 @@
           });
 
           const aiExp = d.ai_expectation_12mo || {};
-          const aiExpLabels = Object.keys(aiExp).map(s => s.length > 35 ? s.slice(0, 32) + '…' : s);
-          createDoughnut('chartAIExpectation', aiExpLabels, Object.values(aiExp), chartColors);
+          createDoughnut('chartAIExpectation', Object.keys(aiExp), Object.values(aiExp), chartColors);
 
           const req = (d.ai_requirements || []).slice(0, 8);
+          function wrapLabel(str, maxLen) {
+            if (!str || str.length <= maxLen) return str;
+            const words = str.split(' ');
+            let line = '', lines = [];
+            words.forEach(w => {
+              if ((line + (line ? ' ' : '') + w).length <= maxLen) line += (line ? ' ' : '') + w;
+              else { if (line) lines.push(line); line = w; }
+            });
+            if (line) lines.push(line);
+            return lines.join('\n');
+          }
           new Chart(document.getElementById('chartAIRequirements'), {
             type: 'bar',
             data: {
-              labels: req.map(r => r.label.length > 45 ? r.label.slice(0, 42) + '…' : r.label),
+              labels: req.map(r => wrapLabel(r.label, 42)),
               datasets: [{ label: 'Selected', data: req.map(r => r.count), backgroundColor: '#4C4084' }]
             },
             options: {
               indexAxis: 'y',
               responsive: true,
               maintainAspectRatio: false,
+              layout: { padding: { left: 8, right: 8 } },
               plugins: { legend: { display: false } },
               scales: {
                 x: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: tickColor } },
-                y: { grid: { display: false }, ticks: { color: '#201547', font: { size: 10 } } }
+                y: { grid: { display: false }, ticks: { color: '#201547', font: { size: 10 }, autoSkip: false }
               }
             }
           });
@@ -679,7 +724,7 @@
           });
 
           const role = d.role || {};
-          createDoughnut('chartRole', Object.keys(role).map(s => s.length > 25 ? s.slice(0, 22) + '…' : s), Object.values(role), chartColors);
+          createDoughnut('chartRole', Object.keys(role), Object.values(role), chartColors);
           const roleCountsEl = document.getElementById('role-counts');
           if (roleCountsEl && Object.keys(role).length) {
             const total = Object.values(role).reduce((a, b) => a + b, 0);
@@ -697,17 +742,18 @@
             new Chart(document.getElementById('chartAIPriority'), {
               type: 'bar',
               data: {
-                labels: aiPriority.map(p => p.label),
+                labels: aiPriority.map(p => wrapLabel(p.label, 42)),
                 datasets: [{ label: 'Responses', data: aiPriority.map(p => p.count), backgroundColor: chartColors }]
               },
               options: {
                 indexAxis: 'y',
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: { padding: { left: 8, right: 8 } },
                 plugins: { legend: { display: false } },
                 scales: {
                   x: { beginAtZero: true, grid: { color: gridColor }, ticks: { color: tickColor } },
-                  y: { grid: { display: false }, ticks: { color: '#201547', font: { size: 10 } } }
+                  y: { grid: { display: false }, ticks: { color: '#201547', font: { size: 10 }, autoSkip: false }
                 }
               }
             });

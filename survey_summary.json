@@ -436,39 +436,39 @@
   ],
   "ai_priority_first": [
     {
-      "label": "Board skills",
+      "label": "Board skills, independence & succession",
       "count": 60
     },
     {
-      "label": "Quality & timeliness",
+      "label": "Quality & timeliness of board materials",
       "count": 58
     },
     {
-      "label": "Progress on strategy",
+      "label": "Progress on strategy & key priorities",
       "count": 55
     },
     {
-      "label": "Early warning",
+      "label": "Early warning on risks & compliance",
       "count": 48
     },
     {
-      "label": "Follow-through",
+      "label": "Follow-through on actions between meetings",
       "count": 44
     },
     {
-      "label": "Board meeting focus",
+      "label": "Board meeting focus & time use",
       "count": 36
     },
     {
-      "label": "Director engagement",
+      "label": "Director engagement beyond attendance",
       "count": 26
     },
     {
-      "label": "Committee work",
+      "label": "Committee work, decisions & monitoring",
       "count": 20
     },
     {
-      "label": "Quality & balance",
+      "label": "Quality & balance of meeting discussions",
       "count": 11
     }
   ],
