@@ -552,7 +552,8 @@
 
   <script>
     (function() {
-      if (typeof ChartDataLabels !== 'undefined') Chart.register(ChartDataLabels);
+      const hasDataLabels = typeof ChartDataLabels !== 'undefined';
+      if (hasDataLabels) Chart.register(ChartDataLabels);
       const dataUrl = 'survey_summary.json';
       const shortMaturity = (s) => {
         if (!s) return 'Other';
@@ -604,22 +605,25 @@
           }
           function createDoughnut(id, labels, counts, colors) {
             const total = counts.reduce((a, b) => a + b, 0);
+            const opts = {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: { position: 'right' }
+              }
+            };
+            if (hasDataLabels) {
+              opts.plugins.datalabels = {
+                color: '#fff',
+                font: { size: 11, weight: 'bold' },
+                formatter: (value) => total ? (value * 100 / total).toFixed(0) + '%' : ''
+              };
+            }
             new Chart(document.getElementById(id), {
               type: 'doughnut',
               data: { labels, datasets: [{ data: counts, backgroundColor: colors }] },
-              plugins: [ChartDataLabels],
-              options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                  legend: { position: 'right' },
-                  datalabels: {
-                    color: '#fff',
-                    font: { size: 11, weight: 'bold' },
-                    formatter: (value) => total ? (value * 100 / total).toFixed(0) + '%' : ''
-                  }
-                }
-              }
+              plugins: hasDataLabels ? [ChartDataLabels] : [],
+              options: opts
             });
           }
 
