@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Governance Insights 2025 Survey — Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a222c;
+      --border: #2d3847;
+      --text: #e6edf3;
+      --text-muted: #8b9cb3;
+      --accent: #3fb4a8;
+      --accent-soft: rgba(63, 180, 168, 0.15);
+      --highlight: #7dd3c0;
+      --danger: #e07d54;
+      --chart1: #3fb4a8;
+      --chart2: #5c8bd6;
+      --chart3: #b47dd3;
+      --chart4: #e07d54;
+      --chart5: #d4a853;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+    header {
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-top: 1.5rem;
+      padding-bottom: 1rem;
+    }
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    nav a:hover { text-decoration: underline; }
+    section {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      color: var(--text);
+    }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+    p { margin: 0 0 0.75rem; color: var(--text); }
+    .muted { color: var(--text-muted); font-size: 0.9rem; }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .stat-card .num { font-family: 'Fraunces', serif; font-size: 1.75rem; font-weight: 700; color: var(--accent); }
+    .stat-card .label { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
+    .chart-container { position: relative; height: 280px; margin: 1.5rem 0; }
+    .chart-container.sm { height: 220px; }
+    .insight-box {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .insight-box strong { color: var(--highlight); }
+    ul { margin: 0.5rem 0 1rem; padding-left: 1.25rem; }
+    li { margin: 0.35rem 0; }
+    blockquote {
+      margin: 1rem 0;
+      padding: 0.75rem 1rem;
+      background: var(--surface);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .now-next-later {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 640px) { .now-next-later { grid-template-columns: 1fr; } }
+    .nnl { padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border); }
+    .nnl.now { background: rgba(63, 180, 168, 0.08); border-color: var(--chart1); }
+    .nnl.next { background: rgba(92, 139, 214, 0.08); border-color: var(--chart2); }
+    .nnl.later { background: rgba(180, 125, 211, 0.08); border-color: var(--chart3); }
+    .nnl h4 { margin: 0 0 0.5rem; font-size: 1rem; }
+    .nnl.now h4 { color: var(--chart1); }
+    .nnl.next h4 { color: var(--chart2); }
+    .nnl.later h4 { color: var(--chart3); }
+    .gtm-nuggets { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0; }
+    .gtm-nugget {
+      background: var(--surface);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+    }
+    .gtm-nugget .num { color: var(--accent); font-weight: 700; }
+    footer { padding: 2rem 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Governance Insights 2025 Survey</h1>
+      <p class="subtitle">Report and insights from board leaders on governance insights maturity, AI readiness, and product direction</p>
+      <nav>
+        <a href="#summary">Summary</a>
+        <a href="#stats">Key stats</a>
+        <a href="#maturity">Maturity</a>
+        <a href="#ai">AI interest</a>
+        <a href="#barriers">Barriers</a>
+        <a href="#slices">Persona & industry</a>
+        <a href="#quotes">Quotes</a>
+        <a href="#direction">Product direction</a>
+        <a href="#gtm">GTM nuggets</a>
+      </nav>
+    </header>
+
+    <section id="summary">
+      <h2>Executive summary</h2>
+      <p><strong>358 board leaders</strong> (directors, CEOs, executive directors, corporate secretaries, board administrators) completed the Governance Insights 2025 survey. Key takeaways:</p>
+      <ul>
+        <li><strong>Maturity is mixed:</strong> One-third are “Developing” (periodic reviews, insights not always timely or acted on); about one-quarter each are “Basic” or “Advanced.” A clear majority expect to be in “Developing” or “Advanced” in 12 months.</li>
+        <li><strong>AI interest is strong:</strong> 72% are somewhat to very interested (3–5 on a 5-point scale) in using AI-generated governance insights. 8% are already using AI today; 33% have moderate expectation to use it within 12 months.</li>
+        <li><strong>Biggest barrier:</strong> “Exists but fragmented/manual” (195 mentions)—insights spread across people and files, requiring manual effort. “No owner/follow-through” and “Not actionable” are also top pain points.</li>
+        <li><strong>Trust matters for AI:</strong> Strong data privacy, human review before sharing, and transparent audit trails are the top requirements for AI-generated insights.</li>
+        <li><strong>Visibility varies by role:</strong> Corporate Secretary/General Counsel report the highest ease accessing insights (e.g., materials, oversight/risk). Executive Directors report the lowest ease on director engagement—a clear persona slice for product.</li>
+      </ul>
+    </section>
+
+    <section id="stats">
+      <h2>Key stats at a glance</h2>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num" id="stat-n">358</div><div class="label">Survey responses</div></div>
+        <div class="stat-card"><div class="num">72%</div><div class="label">Interested in AI insights (3–5)</div></div>
+        <div class="stat-card"><div class="num">41%</div><div class="label">Expect “Developing” in 12 mo</div></div>
+        <div class="stat-card"><div class="num">37%</div><div class="label">Expect “Advanced” in 12 mo</div></div>
+        <div class="stat-card"><div class="num">54%</div><div class="label">Strong data privacy required</div></div>
+        <div class="stat-card"><div class="num">49%</div><div class="label">Nonprofit (industry)</div></div>
+      </div>
+    </section>
+
+    <section id="maturity">
+      <h2>Current maturity &amp; future state</h2>
+      <p>How boards measure and use governance insights today vs. where they expect to be in 12 months.</p>
+      <div class="chart-container">
+        <canvas id="chartMaturity"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="chartFuture"></canvas>
+      </div>
+      <div class="insight-box">
+        <strong>Insight:</strong> 78% expect to be in “Developing” or “Advanced” in 12 months (vs. 60% today). Product can lean into structured reporting and follow-through to meet this trajectory.
+      </div>
+    </section>
+
+    <section id="ai">
+      <h2>AI-driven insights: interest &amp; expectation</h2>
+      <p>Interest in using AI-generated governance insights (1 = not interested, 5 = very interested) and expectation of use in the next 12 months.</p>
+      <div class="chart-container">
+        <canvas id="chartAIInterest"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="chartAIExpectation"></canvas>
+      </div>
+      <h3>What boards want from AI (trust &amp; controls)</h3>
+      <p class="muted">Respondents selected which capabilities are important for AI-generated insights.</p>
+      <div class="chart-container sm">
+        <canvas id="chartAIRequirements"></canvas>
+      </div>
+      <div class="insight-box">
+        <strong>Maturity of AI insights:</strong> Interest is high (72% at 3–5) but only 8% “Already using AI” today. Expectation is mostly “Moderate” (33%) or “No/Low” (45%). This signals a now window for product: meet trust requirements (privacy, audit trail, human review) and deliver clear use cases (e.g., follow-through, engagement) to capture the “moderate expectation” segment.
+      </div>
+    </section>
+
+    <section id="barriers">
+      <h2>Barriers to governance insights</h2>
+      <p>What gets in the way of boards having the insights they need (multiple selections allowed).</p>
+      <div class="chart-container">
+        <canvas id="chartBarriers"></canvas>
+      </div>
+      <div class="insight-box">
+        <strong>Product angle:</strong> “Fragmented/manual” and “No owner/follow-through” point to workflow and ownership. “Not actionable” and “Hard to locate” point to clarity and discoverability. AI and better tooling can target consolidation, clear ownership, and actionable next steps.
+      </div>
+    </section>
+
+    <section id="slices">
+      <h2>Persona &amp; industry slices</h2>
+      <h3>By role</h3>
+      <p>Board Director/Member (49%), Board Administrator (15%), Corporate Secretary/General Counsel (12%), Executive Director (9%), CEO/President (9%), Other (6%).</p>
+      <div class="chart-container sm">
+        <canvas id="chartRole"></canvas>
+      </div>
+      <h3>By industry</h3>
+      <p>Nonprofit leads (49%), then Education (17%), Financial services (11%), Healthcare (7%), Corporate (7%), Other (6%), Government (2%).</p>
+      <div class="chart-container sm">
+        <canvas id="chartIndustry"></canvas>
+      </div>
+      <div class="insight-box">
+        <strong>Visibility / access by persona:</strong> Ease of accessing insights varies by role. Corporate Secretary/General Counsel report the highest “Easy + Very Easy” on materials (61%) and oversight/risk (45%). Executive Directors report the lowest on director engagement (28%). Financial services and Corporate show relatively higher “very interested” (5) in AI—worth slicing in GTM and product.
+      </div>
+      <h3>Cross-question distinctions</h3>
+      <ul>
+        <li><strong>Maturity → AI expectation:</strong> Boards that are already “Advanced” today are much more likely to be “Already using AI” (19 of 89) or “High expectation” (8). “Basic” and “Informal” skew toward “No expectation” or “Low expectation”—suggesting product and GTM should segment by maturity.</li>
+        <li><strong>Role → AI interest:</strong> Corporate Secretary/General Counsel and Board Director/Member show the highest share at 4–5 (very interested). “Other” role has the highest share at 1 (not interested)—worth understanding who falls in “Other” for targeting.</li>
+        <li><strong>Industry → AI interest:</strong> Nonprofit is the largest segment and spread across the interest scale; Financial services and Corporate have a higher proportion at 5 (very interested), so AI messaging may resonate more there first.</li>
+      </ul>
+    </section>
+
+    <section id="quotes">
+      <h2>Where improved insights would create value</h2>
+      <p class="muted">Sample open-ended responses—useful for GTM and positioning.</p>
+      <blockquote>“With centralized and/or automated assistance, we would be less dependent on staff and each other to collect and analyze data.”</blockquote>
+      <blockquote>“Risk mitigation; time savings; decision quality; more productive board meetings with greater follow-through on decisions; more productive discussions with well-prepared board members.”</blockquote>
+      <blockquote>“Over time, stronger governance insights would show up in improved board satisfaction, more effective use of meeting time, and clearer alignment between board direction, management execution, and organizational outcomes.”</blockquote>
+      <blockquote>“I think the board would actually function and get stuff done if we had some better insights around time and follow through. Things would improve and we could make forward progress.”</blockquote>
+      <blockquote>“Having a space to note next steps, action items and then to note/capture the output or finished date would be a great KPI.”</blockquote>
+    </section>
+
+    <section id="direction">
+      <h2>Product direction: Now / Next / Later</h2>
+      <div class="now-next-later">
+        <div class="nnl now">
+          <h4>Now</h4>
+          <p>Double down on follow-through and ownership: action tracking, due dates, status. Address “fragmented/manual” and “no owner/follow-through” with clear workflows and visibility.</p>
+        </div>
+        <div class="nnl next">
+          <h4>Next</h4>
+          <p>AI-generated insights with trust first: strong privacy, human review, transparent audit trail, clear citations. Prioritize use cases: director engagement, follow-through, quality of materials.</p>
+        </div>
+        <div class="nnl later">
+          <h4>Later</h4>
+          <p>Structured reporting across governance areas (strategy, risk, composition) and early warning on risks/compliance. Deeper persona-specific views (e.g., engagement for EDs, materials for Secretaries).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gtm">
+      <h2>GTM nuggets &amp; stats</h2>
+      <p>Clear stats and angles for when the product team is ready for insight-led GTM.</p>
+      <div class="gtm-nuggets">
+        <div class="gtm-nugget"><span class="num">72%</span> of board leaders are somewhat to very interested in AI-generated governance insights.</div>
+        <div class="gtm-nugget"><span class="num">8%</span> are already using AI for governance insights today—early adopters are in market.</div>
+        <div class="gtm-nugget"><span class="num">54%</span> say strong data privacy controls are required for AI insights; 59% want human review before sharing.</div>
+        <div class="gtm-nugget"><span class="num">55%</span> cite insights as “fragmented or manual”—boards want consolidation and less dependency on staff.</div>
+        <div class="gtm-nugget"><span class="num">78%</span> expect to be in Developing or Advanced maturity in 12 months—demand for structured insights is growing.</div>
+      </div>
+    </section>
+
+    <footer>
+      Governance Insights 2025 Survey Report. Data: n=358. Generated for internal use.
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      const dataUrl = 'data/survey_summary.json';
+      let data = {};
+
+      const shortMaturity = (s) => {
+        if (!s) return 'Other';
+        if (s.startsWith('Advanced')) return 'Advanced';
+        if (s.startsWith('Developing')) return 'Developing';
+        if (s.startsWith('Basic')) return 'Basic';
+        if (s.startsWith('Informal')) return 'Informal';
+        return 'Not sure / N/A';
+      };
+
+      const shortFuture = (s) => {
+        if (!s) return 'Other';
+        if (s.startsWith('Developing')) return 'Developing';
+        if (s.startsWith('Advanced')) return 'Advanced';
+        if (s.startsWith('Basic')) return 'Basic';
+        if (s.startsWith('Informal')) return 'Informal';
+        return 'Not sure / N/A';
+      };
+
+      const chartColors = ['#3fb4a8', '#5c8bd6', '#b47dd3', '#e07d54', '#d4a853', '#8b9cb3'];
+
+      fetch(dataUrl)
+        .then(r => r.json())
+        .then(d => {
+          data = d;
+          document.getElementById('stat-n').textContent = d.n;
+
+          // Current maturity (horizontal bar)
+          const mat = d.current_maturity || {};
+          const matLabels = Object.keys(mat).map(shortMaturity);
+          const matCounts = Object.values(mat);
+          new Chart(document.getElementById('chartMaturity'), {
+            type: 'bar',
+            data: {
+              labels: matLabels,
+              datasets: [{ label: 'Responses', data: matCounts, backgroundColor: chartColors.slice(0, matLabels.length) }]
+            },
+            options: {
+              indexAxis: 'y',
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: {
+                x: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#8b9cb3' } },
+                y: { grid: { display: false }, ticks: { color: '#e6edf3' } }
+              }
+            }
+          });
+
+          // Future 12mo
+          const fut = d.future_12mo || {};
+          const futLabels = Object.keys(fut).map(shortFuture);
+          const futCounts = Object.values(fut);
+          new Chart(document.getElementById('chartFuture'), {
+            type: 'bar',
+            data: {
+              labels: futLabels,
+              datasets: [{ label: 'Responses', data: futCounts, backgroundColor: chartColors.slice(0, futLabels.length) }]
+            },
+            options: {
+              indexAxis: 'y',
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: {
+                x: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#8b9cb3' } },
+                y: { grid: { display: false }, ticks: { color: '#e6edf3' } }
+              }
+            }
+          });
+
+          // AI interest (1-5)
+          const aiInt = d.ai_interest || {};
+          const order = ['1','2','3','4','5'];
+          const aiIntLabels = order.map(i => i === '1' ? '1 (Not interested)' : i === '5' ? '5 (Very interested)' : i);
+          const aiIntData = order.map(i => aiInt[i] || 0);
+          new Chart(document.getElementById('chartAIInterest'), {
+            type: 'bar',
+            data: {
+              labels: aiIntLabels,
+              datasets: [{ label: 'Responses', data: aiIntData, backgroundColor: chartColors }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: {
+                y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#8b9cb3' } },
+                x: { grid: { display: false }, ticks: { color: '#e6edf3' } }
+              }
+            }
+          });
+
+          // AI expectation 12mo
+          const aiExp = d.ai_expectation_12mo || {};
+          const aiExpLabels = Object.keys(aiExp).map(s => s.length > 35 ? s.slice(0, 32) + '…' : s);
+          const aiExpCounts = Object.values(aiExp);
+          new Chart(document.getElementById('chartAIExpectation'), {
+            type: 'doughnut',
+            data: {
+              labels: aiExpLabels,
+              datasets: [{ data: aiExpCounts, backgroundColor: chartColors }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { position: 'right' } }
+            }
+          });
+
+          // AI requirements (horizontal bar)
+          const req = (d.ai_requirements || []).slice(0, 8);
+          new Chart(document.getElementById('chartAIRequirements'), {
+            type: 'bar',
+            data: {
+              labels: req.map(r => r.label.length > 45 ? r.label.slice(0, 42) + '…' : r.label),
+              datasets: [{ label: 'Selected', data: req.map(r => r.count), backgroundColor: '#3fb4a8' }]
+            },
+            options: {
+              indexAxis: 'y',
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: {
+                x: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#8b9cb3' } },
+                y: { grid: { display: false }, ticks: { color: '#e6edf3', font: { size: 10 } } }
+              }
+            }
+          });
+
+          // Barriers
+          const bar = d.barriers || [];
+          new Chart(document.getElementById('chartBarriers'), {
+            type: 'bar',
+            data: {
+              labels: bar.map(b => b.label),
+              datasets: [{ label: 'Mentions', data: bar.map(b => b.count), backgroundColor: '#e07d54' }]
+            },
+            options: {
+              indexAxis: 'y',
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: {
+                x: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#8b9cb3' } },
+                y: { grid: { display: false }, ticks: { color: '#e6edf3', font: { size: 10 } } }
+              }
+            }
+          });
+
+          // Role
+          const role = d.role || {};
+          const roleLabels = Object.keys(role);
+          const roleCounts = Object.values(role);
+          new Chart(document.getElementById('chartRole'), {
+            type: 'doughnut',
+            data: {
+              labels: roleLabels.map(s => s.length > 25 ? s.slice(0, 22) + '…' : s),
+              datasets: [{ data: roleCounts, backgroundColor: chartColors }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { position: 'right' } }
+            }
+          });
+
+          // Industry
+          const ind = d.industry || {};
+          const indLabels = Object.keys(ind).filter(k => k !== 'Unknown');
+          const indCounts = indLabels.map(k => ind[k]);
+          new Chart(document.getElementById('chartIndustry'), {
+            type: 'doughnut',
+            data: {
+              labels: indLabels,
+              datasets: [{ data: indCounts, backgroundColor: chartColors }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { position: 'right' } }
+            }
+          });
+        })
+        .catch(e => console.error('Load data failed', e));
+    })();
+  </script>
+</body>
+</html>
